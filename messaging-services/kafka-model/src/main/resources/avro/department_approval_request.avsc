@@ -1,0 +1,50 @@
+{
+  "namespace": "com.hr.saas.app.kafka.model.avro",
+  "type": "record",
+  "name": "DepartmentApprovalRequestAvroModel",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "sagaId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "departmentId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "employeeId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "departmentEmployeeStatus",
+      "type": {
+        "type": "enum",
+        "name": "DepartmentEmployeeStatus",
+        "symbols": ["OK"]
+      }
+    },
+    {
+      "name": "createdAt",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}

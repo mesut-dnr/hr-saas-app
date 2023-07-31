@@ -1,0 +1,35 @@
+{
+  "namespace": "com.hr.saas.app.kafka.model.avro",
+  "type": "record",
+  "name": "EmployeeCreateRequestAvroModel",
+  "fields": [
+    {
+      "name": "employeeId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "departmentId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "personId",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "createdAt",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}
