@@ -30,7 +30,7 @@ public class CreateEmployeeCommandHandler {
 
     //private final PersonRepository personRepository;
 
-    private final DepartmentRepository departmentRepository;
+   // private final DepartmentRepository departmentRepository;
 
     private final EmployeeMapper employeeMapper;
 
@@ -38,14 +38,16 @@ public class CreateEmployeeCommandHandler {
 
     @Transactional
     public CreateEmployeeResponse createEmployee(CreateEmployeeCommand createEmployeeCommand) {
-        checkPerson(createEmployeeCommand.getPersonId());
-        checkDepartment(createEmployeeCommand.getDepartmentId());
+        //checkPerson(createEmployeeCommand.getPersonId());
+        //checkDepartment(createEmployeeCommand.getDepartmentId());
 
 
         Employee employee = employeeMapper.commandToEntity(createEmployeeCommand);
        // Person person = personRepository.findPersonByPersonId(createEmployeeCommand.getPersonId()).get();
         Person person = Person.Builder.builder().personName("abc").build();
-        Department department = departmentRepository.findByDepartment(createEmployeeCommand.getDepartmentId()).get();
+        Department department = Department.Builder.builder().departmentName("test").build();
+
+                //departmentRepository.findByDepartment(createEmployeeCommand.getDepartmentId()).get();
 
         EmployeeCreatedEvent employeeCreatedEvent = employeeDomainService
                 .validateAndInitiateEmployee(employee, person, department);
@@ -61,12 +63,12 @@ public class CreateEmployeeCommandHandler {
     }
 
     private void checkDepartment(UUID departmentId) {
-        Optional<Department> department = departmentRepository.findByDepartment(departmentId);
-
-        if (department.isEmpty()) {
-            System.out.println("There is no person with the id: " + departmentId);
-            throw new EmployeeDomainException("There is no person with the id: " + departmentId);
-        }
+//        Optional<Department> department = departmentRepository.findByDepartment(departmentId);
+//
+//        if (department.isEmpty()) {
+//            System.out.println("There is no person with the id: " + departmentId);
+//            throw new EmployeeDomainException("There is no person with the id: " + departmentId);
+//        }
     }
 
     private void checkPerson(UUID personId) {

@@ -2,11 +2,13 @@ package com.hr.saas.app.messaging.mapper;
 
 import com.hr.saas.app.dto.message.DepartmentApprovalResponse;
 import com.hr.saas.app.kafka.model.avro.DepartmentApprovalResponseAvroModel;
-import com.hr.saas.app.kafka.model.avro.EmployeeApprovalStatus;
 import com.hr.saas.app.kafka.model.avro.EmployeeCreateRequestAvroModel;
 import com.hr.saas.domain.entity.Employee;
 import com.hr.saas.domain.event.EmployeeCancelledEvent;
 import com.hr.saas.domain.event.EmployeeCreatedEvent;
+import org.springframework.stereotype.Component;
+
+@Component
 
 public class EmployeeMessagingMapper {
 
