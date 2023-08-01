@@ -19,8 +19,8 @@ public class EmployeeDomainServiceImpl implements EmployeeDomainService {
 
     @Override
     public EmployeeCreatedEvent validateAndInitiateEmployee(Employee employee, Person person, Department department) {
-        validatePerson(person);
-        validateDepartment(department);
+        //validatePerson(person);
+        //validateDepartment(department);
         employee.validateEmployee();
         employee.initializeEmployee();
         System.out.println("Employee initiated. ID: " + employee.getId().getValue());

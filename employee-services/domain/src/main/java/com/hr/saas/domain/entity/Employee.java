@@ -55,8 +55,8 @@ public class Employee extends AggregateRoot<EmployeeId> {
     }
 
     public void validateEmployee() {
-        validateEmployeeInfo();
-        validatePersonalInfo();
+        //validateEmployeeInfo();
+        //validatePersonalInfo();
     }
 
     private void validateEmployeeInfo() {

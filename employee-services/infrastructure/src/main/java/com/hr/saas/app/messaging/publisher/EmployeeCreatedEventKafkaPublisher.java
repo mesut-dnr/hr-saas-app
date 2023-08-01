@@ -31,7 +31,8 @@ public class EmployeeCreatedEventKafkaPublisher implements EmployeeCreatedDepart
             EmployeeCreateRequestAvroModel avroModel = employeeMessagingMapper
                     .employeeCreatedEventToAvroModel(employeeCreatedEvent);
 
-            String createEmployeeTopicName = employeeServiceConfig.getCreateEmployeeTopicName();
+
+            String createEmployeeTopicName = employeeServiceConfig.getCreateEmployeeRequestTopicName();
             String createEmployeeResponseTopicName = employeeServiceConfig.getCreateEmployeeResponseTopicName();
 
             kafkaProducer.send(createEmployeeTopicName, employeeId, avroModel

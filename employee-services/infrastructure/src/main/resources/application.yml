@@ -2,6 +2,7 @@ server:
   port: 8090
 
 employee-services:
+  employee-created-topic-name: employee-created
   create-employee-request-topic-name: create-employee-request
   create-employee-response-topic-name: create-employee-response
   department-approval-request-topic-name: department-approval-request

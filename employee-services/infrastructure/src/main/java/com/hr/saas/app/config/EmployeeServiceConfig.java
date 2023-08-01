@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @ConfigurationProperties(prefix = "employee-services")
 public class EmployeeServiceConfig {
-    private String createEmployeeTopicName;
+    private String createEmployeeRequestTopicName;
     private String createEmployeeResponseTopicName;
     private String departmentApprovalRequestTopicName;
     private String departmentApprovalResponseTopicName;
