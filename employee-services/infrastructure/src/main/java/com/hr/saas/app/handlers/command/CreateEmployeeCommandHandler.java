@@ -3,7 +3,7 @@ package com.hr.saas.app.handlers.command;
 import com.hr.saas.app.dto.create.CreateEmployeeCommand;
 import com.hr.saas.app.dto.create.CreateEmployeeResponse;
 import com.hr.saas.app.mapper.EmployeeMapper;
-import com.hr.saas.app.port.output.message.department.EmployeeCreatedDepartmentRequestMessagePublisher;
+import com.hr.saas.app.port.output.message.department.EmployeeCreatedDepartmentApprovalRequestMessagePublisher;
 import com.hr.saas.app.port.output.repository.EmployeeRepository;
 import com.hr.saas.domain.EmployeeDomainService;
 import com.hr.saas.domain.entity.Department;
@@ -29,7 +29,7 @@ public class CreateEmployeeCommandHandler {
 
     private final EmployeeMapper employeeMapper;
 
-    private final EmployeeCreatedDepartmentRequestMessagePublisher publisher;
+    private final EmployeeCreatedDepartmentApprovalRequestMessagePublisher publisher;
 
     @Transactional
     public CreateEmployeeResponse createEmployee(CreateEmployeeCommand createEmployeeCommand) {

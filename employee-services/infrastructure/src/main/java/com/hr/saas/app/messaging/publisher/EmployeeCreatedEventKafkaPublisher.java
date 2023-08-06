@@ -4,7 +4,7 @@ import com.hr.saas.app.config.EmployeeServiceConfig;
 import com.hr.saas.app.kafka.model.avro.EmployeeCreateRequestAvroModel;
 import com.hr.saas.app.kafka.producer.service.KafkaProducer;
 import com.hr.saas.app.messaging.mapper.EmployeeMessagingMapper;
-import com.hr.saas.app.port.output.message.department.EmployeeCreatedDepartmentRequestMessagePublisher;
+import com.hr.saas.app.port.output.message.department.EmployeeCreatedDepartmentApprovalRequestMessagePublisher;
 import com.hr.saas.domain.event.EmployeeCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class EmployeeCreatedEventKafkaPublisher implements EmployeeCreatedDepartmentRequestMessagePublisher {
+public class EmployeeCreatedEventKafkaPublisher implements EmployeeCreatedDepartmentApprovalRequestMessagePublisher {
 
     private final EmployeeMessagingMapper employeeMessagingMapper;
 
