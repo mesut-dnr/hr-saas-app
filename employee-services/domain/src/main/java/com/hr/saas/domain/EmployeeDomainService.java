@@ -5,14 +5,13 @@ import com.hr.saas.domain.event.EmployeeCancelledEvent;
 import com.hr.saas.domain.event.EmployeeRejectedEvent;
 import com.hr.saas.domain.entity.Department;
 import com.hr.saas.domain.entity.Employee;
-import com.hr.saas.domain.entity.Person;
 import com.hr.saas.domain.event.EmployeeCreatedEvent;
 
 import java.util.List;
 
 public interface EmployeeDomainService {
 
-    EmployeeCreatedEvent validateAndInitiateEmployee(Employee employee, Person person, Department department);
+    EmployeeCreatedEvent validateAndInitiateEmployee(Employee employee, Department department);
 
     EmployeeApprovedEvent approveEmployee(Employee employee);
 

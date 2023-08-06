@@ -5,7 +5,6 @@ import com.hr.saas.domain.event.EmployeeCancelledEvent;
 import com.hr.saas.domain.event.EmployeeRejectedEvent;
 import com.hr.saas.domain.entity.Department;
 import com.hr.saas.domain.entity.Employee;
-import com.hr.saas.domain.entity.Person;
 import com.hr.saas.domain.event.EmployeeCreatedEvent;
 import com.hr.saas.domain.exception.EmployeeDomainException;
 
@@ -18,8 +17,7 @@ public class EmployeeDomainServiceImpl implements EmployeeDomainService {
     private static final String TIME_ZONE_ID = "UTC";
 
     @Override
-    public EmployeeCreatedEvent validateAndInitiateEmployee(Employee employee, Person person, Department department) {
-        //validatePerson(person);
+    public EmployeeCreatedEvent validateAndInitiateEmployee(Employee employee, Department department) {
         //validateDepartment(department);
         employee.validateEmployee();
         employee.initializeEmployee();
@@ -56,11 +54,5 @@ public class EmployeeDomainServiceImpl implements EmployeeDomainService {
             throw new EmployeeDomainException("Department name is required");
         }
 
-    }
-
-    private void validatePerson(Person person) {
-        if (person.getPersonName() == null) {
-            throw new EmployeeDomainException("Department name is required");
-        }
     }
 }
