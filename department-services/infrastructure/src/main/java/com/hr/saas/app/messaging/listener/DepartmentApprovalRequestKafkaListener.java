@@ -2,6 +2,7 @@ package com.hr.saas.app.messaging.listener;
 
 import com.hr.saas.app.kafka.consumer.KafkaConsumer;
 import com.hr.saas.app.kafka.model.avro.DepartmentApprovalRequestAvroModel;
+import com.hr.saas.app.kafka.model.avro.EmployeeCreateRequestAvroModel;
 import com.hr.saas.app.messaging.mapper.DepartmentMessagingMapper;
 import com.hr.saas.app.port.input.message.listener.employee.DepartmentApprovalRequestMessageListener;
 import lombok.RequiredArgsConstructor;
@@ -20,47 +21,23 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class DepartmentApprovalRequestKafkaListener implements KafkaConsumer<DepartmentApprovalRequestAvroModel> {
+public class DepartmentApprovalRequestKafkaListener implements KafkaConsumer<EmployeeCreateRequestAvroModel> {
     private final DepartmentApprovalRequestMessageListener departmentApprovalRequestMessageListener;
     private final DepartmentMessagingMapper departmentMessagingMapper;
 
     @Override
-    @KafkaListener(id = "${kafka-consumer-config.department-approval-consumer-group-id}",
-            topics = "${departments-services.department-approval-request-topic-name}")
-    public void receive(@Payload List<DepartmentApprovalRequestAvroModel> messages,
+    @KafkaListener(id = "${kafka-consumer-config.create-employee-request-consumer-group-id}",
+            topics = "${department-services.create-employee-request-topic-name}")
+    public void receive(@Payload EmployeeCreateRequestAvroModel messages,
                         @Header(KafkaHeaders.RECEIVED_KEY) List<String> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,
                         @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
-        System.out.println((messages.size() + " number of department approval responses received"
+        System.out.println((messages + " number of department approval responses received"
                 + " with keys:" + keys.toString()
                 + " partitions:" + partitions.toString()
                 + "and offsets:" + offsets.toString()));
 
-        messages.forEach(departmentApprovalRequestAvroModel -> {
-            try {
-                System.out.println("Processing employee approval for employee id:"
-                        + departmentApprovalRequestAvroModel.getEmployeeId());
-                departmentApprovalRequestMessageListener
-                        .approveEmployee(departmentMessagingMapper
-                                .departmentApprovalRequestAvroModelToRestaurantApproval((departmentApprovalRequestAvroModel))
-                        );
-            } catch (DataAccessException e) {
-                SQLException sqlException = (SQLException) e.getRootCause();
-                if (sqlException != null && sqlException.getSQLState() != null
-                       /* PSQLState.UNIQUE_VIOLATION.getState().equals(sqlException.getSQLState())*/) {
-                    //NO-OP for unique constraint exception
-                    log.error("Caught unique constraint exception with sql state: {} " +
-                                    "in DepartmentApprovalRequestKafkaListener for employee id: {}",
-                            sqlException.getSQLState(), departmentApprovalRequestAvroModel.getEmployeeId());
-                } else {
-                    // TODO: throw exception
-                }
-            } catch (Exception e) {
-                //NO-OP for RestaurantNotFoundException
-                log.error("No department found for department id: {}, and employee id: {}",
-                        departmentApprovalRequestAvroModel.getDepartmentId(),
-                        departmentApprovalRequestAvroModel.getEmployeeId());
-            }
-        });
+        System.out.println("mESAJ ALINDI...");
+
     }
 }

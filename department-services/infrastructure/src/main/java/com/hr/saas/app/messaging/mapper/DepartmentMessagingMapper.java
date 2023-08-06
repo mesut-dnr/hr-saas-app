@@ -6,10 +6,12 @@ import com.hr.saas.app.kafka.model.avro.DepartmentApprovalResponseAvroModel;
 import com.hr.saas.app.kafka.model.avro.DepartmentEmployeeStatus;
 import com.hr.saas.app.kafka.model.avro.EmployeeApprovalStatus;
 import com.hr.saas.app.model.EmployeeEventPayload;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class DepartmentMessagingMapper {
 
     public DepartmentApprovalRequest

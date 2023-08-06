@@ -1,6 +1,11 @@
 server:
   port: 8090
 
+
+logging:
+  level:
+    root: INFO
+
 employee-services:
   employee-created-topic-name: employee-created
   create-employee-request-topic-name: create-employee-request
@@ -44,13 +49,13 @@ kafka-producer-config:
   batch-size: 16384
   batch-size-boost-factor: 100
   linger-ms: 5
-  request-timeout-ms: 60000
+  request-timeout-ms: 180000
   retry-count: 5
 
 kafka-consumer-config:
   key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
-  department-approval-consumer-group-id: department-approval-topic-consumer
+  #department-approval-consumer-group-id: department-approval-topic-consumer
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader
   specific-avro-reader: true
