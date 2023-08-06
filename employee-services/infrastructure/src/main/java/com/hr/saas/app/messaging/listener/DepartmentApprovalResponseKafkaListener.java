@@ -17,13 +17,13 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class DepartmentApprovalResponseKafkaListener{ //implements KafkaConsumer<DepartmentApprovalResponseAvroModel> {
+public class DepartmentApprovalResponseKafkaListener { //implements KafkaConsumer<DepartmentApprovalResponseAvroModel> {
 
     private final DepartmentApprovalResponseMessageListener departmentApprovalResponseMessageListener;
     private final EmployeeMessagingMapper employeeMessagingMapper;
 
-    //@KafkaListener(id = "${kafka-consumer-config.department-approval-consumer-group-id}",
-            //topics = "${employee-services.department-approval-response-topic-name}")
+    @KafkaListener(id = "${kafka-consumer-config.department-approval-consumer-group-id}",
+            topics = "${employee-services.department-approval-response-topic-name}")
     public void receive(@Payload List<DepartmentApprovalResponseAvroModel> messages,
                         @Header(KafkaHeaders.RECEIVED_KEY) List<String> keys,
                         @Header(KafkaHeaders.RECEIVED_PARTITION) List<Integer> partitions,

@@ -6,7 +6,6 @@ logging:
     root: INFO
 
 department-services:
-  create-employee-request-topic-name: create-employee-request
   department-approval-request-topic-name: department-approval-request
   department-approval-response-topic-name: department-approval-response
   

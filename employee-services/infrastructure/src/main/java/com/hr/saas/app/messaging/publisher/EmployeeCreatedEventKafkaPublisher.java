@@ -32,14 +32,14 @@ public class EmployeeCreatedEventKafkaPublisher implements EmployeeCreatedDepart
                     .employeeCreatedEventToAvroModel(employeeCreatedEvent);
 
 
-            String createEmployeeTopicName = employeeServiceConfig.getCreateEmployeeRequestTopicName();
-            String createEmployeeResponseTopicName = employeeServiceConfig.getCreateEmployeeResponseTopicName();
+            String departmentApprovalRequestTopicName = employeeServiceConfig.getDepartmentApprovalRequestTopicName();
+            String departmentApprovalResponseTopicName = employeeServiceConfig.getDepartmentApprovalResponseTopicName();
 
-            kafkaProducer.send(createEmployeeTopicName, employeeId, avroModel
+            kafkaProducer.send(departmentApprovalRequestTopicName, employeeId, avroModel
             );
 
             System.out.println("EmployeeCreateRequestAvroModel sent to topic:"
-                    + createEmployeeTopicName + " for employeeId:" + avroModel.getEmployeeId());
+                    + departmentApprovalRequestTopicName + " for employeeId:" + avroModel.getEmployeeId());
         } catch (Exception e) {
             System.out.println("An exception occurred while sending:" + e);
         }
