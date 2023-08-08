@@ -26,7 +26,7 @@ public class DepartmentApprovalRequestKafkaListener implements KafkaConsumer<Emp
     private final DepartmentMessagingMapper departmentMessagingMapper;
 
     @Override
-    @KafkaListener(id = "${kafka-consumer-config.create-employee-request-consumer-group-id}",
+    @KafkaListener(id = "${kafka-consumer-config.department-approval-consumer-group-id}",
             topics = "${department-services.department-approval-request-topic-name}")
     public void receive(@Payload EmployeeCreateRequestAvroModel messages,
                         @Header(KafkaHeaders.RECEIVED_KEY) List<String> keys,
